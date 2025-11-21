@@ -11,7 +11,7 @@ const Register = () => {
     password: '',
   });
   
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,8 +23,8 @@ const Register = () => {
       const res = await axios.post('https://group01-1.onrender.com/api/users/register', formData);
       console.log('User registered:', res.data);
       
-      // Redirect to login page after successful registration
-      navigate('/login'); // Change to your login route
+ 
+      navigate('/login'); 
     } catch (err) {
       console.error(err);
     }

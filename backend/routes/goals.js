@@ -3,12 +3,11 @@ const express = require('express');
 const router = express.Router();
 const Goal = require('../models/Goal');
 
-// Create a new goal for a specific day
-// routes/goals.js
+
 router.post('/', async (req, res) => {
   const { userId, day, distance, totalgoals, progress } = req.body;
 
-  // Validate only required fields
+
   if (!userId || day == null || distance == null) {
     return res.status(400).json({ error: 'User ID, Day, and Distance are required.' });
   }
@@ -18,8 +17,8 @@ router.post('/', async (req, res) => {
       userId,
       day: Number(day),
       distance: Number(distance),
-      totalgoals: totalgoals ? Number(totalgoals) : undefined, // Set undefined if empty
-      progress: progress ? Number(progress) : undefined        // Set undefined if empty
+      totalgoals: totalgoals ? Number(totalgoals) : undefined, 
+      progress: progress ? Number(progress) : undefined        
     });
     await goal.save();
     res.status(201).json(goal);
@@ -28,7 +27,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Delete a goal
+
 router.delete('/:goalId', async (req, res) => {
   const { goalId } = req.params;
 
@@ -45,7 +44,7 @@ router.delete('/:goalId', async (req, res) => {
   }
 });
 
-// Update a goal
+
 router.put('/:goalId', async (req, res) => {
   const { goalId } = req.params;
   const { day, distance, totalgoals, progress } = req.body;
@@ -58,7 +57,7 @@ router.put('/:goalId', async (req, res) => {
   }
 });
 
-// Fetch all goals for a specific user
+
 router.get('/:userId', async (req, res) => {
   const { userId } = req.params;
 

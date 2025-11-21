@@ -10,8 +10,8 @@ const Goals = ({ userId }) => {
   const [goals, setGoals] = useState([]);
   const [totalTarget, setTotalTarget] = useState(0);
   const [totalProgress, setTotalProgress] = useState(0);
-  const [areGoalsVisible, setAreGoalsVisible] = useState(false); // For toggling the visibility of goals
-  const [popupMessage, setPopupMessage] = useState(''); // Popup message state
+  const [areGoalsVisible, setAreGoalsVisible] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
 
   useEffect(() => {
     if (userId) {
@@ -25,7 +25,6 @@ const Goals = ({ userId }) => {
       if (response.ok) {
         const data = await response.json();
 
-        // Ensure data is an array
         if (Array.isArray(data)) {
           const totalTarget = data.reduce((sum, goal) => sum + (goal.totalgoals || 0), 0);
           const totalProgress = data.reduce((sum, goal) => sum + (goal.progress || 0), 0);
@@ -35,7 +34,7 @@ const Goals = ({ userId }) => {
           setTotalProgress(totalProgress);
         } else {
           console.error('Fetched data is not an array.');
-          setGoals([]); // In case of invalid data, reset to an empty array
+          setGoals([]);
         }
       } else {
         console.error('Failed to fetch goals:', response.status);
@@ -55,12 +54,12 @@ const Goals = ({ userId }) => {
         body: JSON.stringify(newGoal),
       });
       if (response.ok) {
-        await fetchGoals(userId); // Refresh goals list
-        setPopupMessage('Goal added successfully!'); // Show success message
-        setTimeout(() => setPopupMessage(''), 3000); // Hide popup after 3 seconds
+        await fetchGoals(userId);
+        setPopupMessage('Goal added successfully!');
+        setTimeout(() => setPopupMessage(''), 3000);
       } else {
-        setPopupMessage('Failed to add goal'); // Show error message
-        setTimeout(() => setPopupMessage(''), 3000); // Hide popup after 3 seconds
+        setPopupMessage('Failed to add goal');
+        setTimeout(() => setPopupMessage(''), 3000);
       }
     } catch (error) {
       console.error('Error adding goal:', error);
@@ -73,12 +72,12 @@ const Goals = ({ userId }) => {
         method: 'DELETE',
       });
       if (response.ok) {
-        await fetchGoals(userId); // Refresh the goals after deletion
-        setPopupMessage('Goal deleted successfully!'); // Show success message
-        setTimeout(() => setPopupMessage(''), 3000); // Hide popup after 3 seconds
+        await fetchGoals(userId);
+        setPopupMessage('Goal deleted successfully!');
+        setTimeout(() => setPopupMessage(''), 3000);
       } else {
-        setPopupMessage('Failed to delete goal'); // Show error message
-        setTimeout(() => setPopupMessage(''), 3000); // Hide popup after 3 seconds
+        setPopupMessage('Failed to delete goal');
+        setTimeout(() => setPopupMessage(''), 3000);
       }
     } catch (error) {
       console.error('Error deleting goal:', error);
@@ -108,7 +107,7 @@ const Goals = ({ userId }) => {
   };
 
   const barOptions = {
-    indexAxis: 'y', // Set the bar chart to horizontal
+    indexAxis: 'y',
     maintainAspectRatio: false,
     responsive: true,
     scales: {
@@ -128,7 +127,7 @@ const Goals = ({ userId }) => {
   return (
     <section className="goals">
       <h2>Goals</h2>
-      <AddGoal userId={userId} fetchGoals={() => fetchGoals(userId)} addGoal={addGoal} /> {/* Pass addGoal function to AddGoal */}
+      <AddGoal userId={userId} fetchGoals={() => fetchGoals(userId)} addGoal={addGoal} />
       
       <div className="chart-container">
         <h3>Achievements</h3>
@@ -138,6 +137,7 @@ const Goals = ({ userId }) => {
           <p>No goals added yet.</p>
         )}
       </div>
+
       <div className="chart-container">
         <h3>Daily Progress</h3>
         <Bar data={barData} options={barOptions} />
@@ -169,7 +169,6 @@ const Goals = ({ userId }) => {
         </div>
       )}
 
-      {/* Popup Message */}
       {popupMessage && <div className="popup">{popupMessage}</div>}
     </section>
   );

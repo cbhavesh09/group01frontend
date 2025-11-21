@@ -12,7 +12,7 @@ const AccountSettings = () => {
   });
   const [popupMessage, setPopupMessage] = useState('');
 
-  // Fetch user data from local storage
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
@@ -36,8 +36,8 @@ const AccountSettings = () => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
 
-      // Make sure the user ID is available and the correct format
-      const userId = user.id; // Ensure `id` instead of `_id`
+  
+      const userId = user.id; 
       if (!userId) {
         console.error("User ID is missing, cannot save settings.");
         return;
@@ -49,19 +49,18 @@ const AccountSettings = () => {
           'Authorization': user.token,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ userId: userId, ...settings }), // Use userId here
+        body: JSON.stringify({ userId: userId, ...settings }), 
       });
 
       if (response.ok) {
         const updatedUser = await response.json();
         console.log('Updated settings:', updatedUser);
 
-        // Update local storage with the latest settings, including `id`
+     
         const updatedUserData = { ...user, ...updatedUser };
         localStorage.setItem('user', JSON.stringify(updatedUserData));
         localStorage.setItem('refreshTrigger', Date.now().toString());
 
-        // Update the local state with the new settings
         setSettings({
           fullName: updatedUser.fullName,
           dob: updatedUser.dob.split('T')[0],
@@ -70,7 +69,7 @@ const AccountSettings = () => {
           goal: updatedUser.goal,
         });
 
-        // Show popup message
+
         setPopupMessage('Changes saved successfully!');
         setTimeout(() => setPopupMessage(''), 3000);
       } else {

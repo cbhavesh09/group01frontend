@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Workout = require('../models/Workout');
 
-// Create a workout (POST)
+
 router.post('/', async (req, res) => {
   const workout = new Workout(req.body);
   try {
@@ -13,7 +13,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get all workouts (GET)
 router.get('/', async (req, res) => {
   try {
     const workouts = await Workout.find();
@@ -23,7 +22,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get all workouts for a user (GET)
+
 router.get('/:userId', async (req, res) => {
   const { userId } = req.params;
   try {
@@ -37,7 +36,7 @@ router.get('/:userId', async (req, res) => {
   }
 });
 
-// Delete a workout (DELETE)
+
 router.delete('/:id', async (req, res) => {
   const { id } = req.params;
   try {
@@ -52,5 +51,5 @@ router.delete('/:id', async (req, res) => {
 });
 
 
-// Export the router
+
 module.exports = router;

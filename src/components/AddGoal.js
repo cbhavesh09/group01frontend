@@ -9,26 +9,25 @@ const AddGoal = ({ userId, fetchGoals }) => {
   const [error, setError] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
-  const [popupMessage, setPopupMessage] = useState(''); // State for success/error message
+  const [popupMessage, setPopupMessage] = useState(''); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check only day and distance
     if (!day || !distance) {
       setError('Day and Distance are required.');
       return;
     }
 
     try {
-      // Prepare the request body dynamically to exclude empty fields
+
       const goalData = {
         userId,
         day: Number(day),
         distance: Number(distance)
       };
 
-      // Only include totalGoals and progress if they have values
+
       if (totalGoals) goalData.totalgoals = Number(totalGoals);
       if (progress) goalData.progress = Number(progress);
 
@@ -41,7 +40,7 @@ const AddGoal = ({ userId, fetchGoals }) => {
       });
 
       if (response.ok) {
-        // Refresh goals data after successful addition
+
         await fetchGoals();
         setDay('');
         setDistance('');
@@ -49,8 +48,8 @@ const AddGoal = ({ userId, fetchGoals }) => {
         setProgress('');
         setError('');
         setIsOpen(false);
-        setPopupMessage('Goal added successfully!'); // Show success message
-        setTimeout(() => setPopupMessage(''), 3000); // Hide popup after 3 seconds
+        setPopupMessage('Goal added successfully!'); 
+        setTimeout(() => setPopupMessage(''), 3000); 
       } else {
         const data = await response.json();
         setError(data.error || 'Failed to add goal.');
@@ -118,7 +117,7 @@ const AddGoal = ({ userId, fetchGoals }) => {
         </form>
       )}
 
-      {/* Popup Message */}
+      {}
       {popupMessage && <div className="popup">{popupMessage}</div>}
     </div>
   );

@@ -3,18 +3,18 @@ import axios from 'axios';
 
 const AddWorkout = ({ userId, onWorkoutAdded }) => {
   const [title, setTitle] = useState('');
-  const [duration, setDuration] = useState(''); // Duration in mins
+  const [duration, setDuration] = useState(''); 
   const [type, setType] = useState('');
-  const [weight, setWeight] = useState(''); // Weight in kgs
+  const [weight, setWeight] = useState(''); 
 
   const handleAddWorkout = async (e) => {
     e.preventDefault();
 
     const newWorkout = {
       title,
-      duration: `${duration} mins`, // Automatically append 'mins'
+      duration: `${duration} mins`, 
       type,
-      weight: `${weight} kgs`, // Automatically append 'kgs'
+      weight: `${weight} kgs`, 
       date: new Date().toISOString(),
       userId,
     };
@@ -26,7 +26,7 @@ const AddWorkout = ({ userId, onWorkoutAdded }) => {
       console.error('Error adding workout:', err);
     }
 
-    // Reset form fields
+
     setTitle('');
     setDuration('');
     setType('');

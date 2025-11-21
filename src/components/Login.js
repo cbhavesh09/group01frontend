@@ -14,23 +14,21 @@ const Login = ({ setUser }) => {
     e.preventDefault();
     try {
       const res = await axios.post('https://group01-1.onrender.com/api/users/login', { email, password });
-      const { username, _id, token } = res.data; // Make sure to include the token from the response
+      const { username, _id, token } = res.data; 
   
-      // Fetch user settings after successful login
       const settingsRes = await axios.get(`https://group01-1.onrender.com/api/users/account-settings/${_id}`, {
-        headers: { 'Authorization': token } // Include the token for authorization
+        headers: { 'Authorization': token } 
       });
   
-      const userSettings = settingsRes.data; // Get the user settings
+      const userSettings = settingsRes.data; 
   
       console.log('Login successful:', res.data);
   
-      // Save both user data and settings to local storage
+
       const user = { id: _id, username, token, ...userSettings };
       localStorage.setItem('user', JSON.stringify(user));
-      setUser(user); // Update user state in App
-  
-      // Redirect to Account Settings page after login
+      setUser(user); 
+
       navigate('/account-settings');
     } catch (err) {
       console.error(err);

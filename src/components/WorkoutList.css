@@ -1,131 +1,129 @@
-/* This is WorkoutList.css */
-
 .workout-list {
-  max-width: 1500px; /* Set a maximum width for the main container */
-  margin: 1px auto; /* Center the section */
+  max-width: 1500px;
+  margin: 1px auto;
   padding: 20px;
-  background-color: white; /* Set background to plain white */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 1px 4px 8px rgba(247, 3, 3, 0.1); /* Shadow for depth */
-  font-family: 'Courier New', Courier, monospace; /* Monospace font */
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 4px 8px rgba(247, 3, 3, 0.1);
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .workout-container {
-  display: flex; /* Flexbox to arrange the children in a row */
-  gap: 20px; /* Space between children */
-  align-items: flex-start; /* Align items to the top of the container */
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
 }
 
 .workout-details {
-  flex: 0.5; /* Take up 50% space */
+  flex: 0.5;
   display: flex;
-  flex-direction: column; /* Stack workout items vertically */
+  flex-direction: column;
 }
 
 .weight-chart {
-  flex: 0.5; /* Take up remaining 50% space of the parent container */
-  height: 400px; /* Adjusted height for the chart */
-  border: 1px solid #e0e0e0; /* Border for the chart */
-  border-radius: 5px; /* Rounded corners for the chart */
-  background-color: #f3f3f3; /* Light background for the chart */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
-  padding: 30px; /* Padding for content inside the chart */
-  box-sizing: border-box; /* Include padding and border in total width and height */
+  flex: 0.5;
+  height: 400px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #f3f3f3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  box-sizing: border-box;
 }
 
 .weight-chart h3 {
-  margin: 0 0 5px; /* Margin below the title to add space */
-  color: #000000; /* Title color */
+  margin: 0 0 5px;
+  color: #000000;
 }
 
 .weight-chart canvas {
-  height: 100% !important; /* Ensure the canvas fills the entire chart container */
-  width: 100% !important; /* Ensure the canvas fills the entire width of the container */
+  height: 100% !important;
+  width: 100% !important;
 }
 
 .workout-list > h2 {
-  font-size: 30px; /* Title font size */
-  text-align: left; /* Left align the title */
-  margin-bottom: 20px; /* Space below title */
-  color: #ff3333 !important; /* Red color for the main title */
-  font-family: 'Courier New', Courier, monospace; /* Monospace font */
+  font-size: 30px;
+  text-align: left;
+  margin-bottom: 20px;
+  color: #ff3333 !important;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .workout-list .workout-item {
-  margin-bottom: 20px; /* Space between workouts */
-  padding: 15px; /* Padding inside each workout item */
-  border: 10px solid #f2d0ce; /* Border for each workout item */
-  border-radius: 5px; /* Rounded corners for workout items */
-  background-color: #f9f9f9; /* Light background for workout items */
-  transition: transform 0.4s; /* Transition for hover effect */
-  font-family: 'Courier New', Courier, monospace; /* Monospace font */
-  text-align: left; /* Align text to the left */
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 10px solid #f2d0ce;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  transition: transform 0.4s;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: left;
 }
 
 .workout-list .workout-item:hover {
-  transform: scale(1.02); /* Slight scale effect on hover */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Specific styles for morning run, weight lifting, and yoga sessions */
 .workout-list .morning-run,
 .workout-list .weight-lifting,
 .workout-list .yoga-session {
-  background-color: #f2d0ce; /* Light red background for specific workouts */
-  text-align: left; /* Shift all content to the left */
+  background-color: #f2d0ce;
+  text-align: left;
 }
 
 .workout-list .workout-item > h3 {
-  font-size: 20px; /* Subtitle font size */
-  color: black; /* Set workout title color to black */
-  margin: 0; /* Remove margin for better alignment */
+  font-size: 20px;
+  color: black;
+  margin: 0;
 }
 
 .workout-list .workout-item .workout-details-left {
-  text-align: left; /* Left align the details for all workouts */
-  margin-top: 5px; /* Optional: Space above details */
+  text-align: left;
+  margin-top: 5px;
 }
 
 .workout-list .workout-item p {
-  margin: 1px 0; /* Space between paragraphs */
-  color: #000000; /* Text color for details */
-  font-size: 14px; /* Font size for workout details */
+  margin: 1px 0;
+  color: #000000;
+  font-size: 14px;
 }
+
 .add-workout-toggle {
-  margin: 20px 0; /* Space around the button */
+  margin: 20px 0;
 }
 
 .toggle-button {
-  padding: 10px 20px; /* Consistent padding */
+  padding: 10px 20px;
   border-radius: 4px;
-  border: none; /* Remove default border */
+  border: none;
   cursor: pointer;
-  transition: all 0.3s ease; /* Smooth transition */
-  width: 120px; /* Fixed width for uniform size */
-  font-size: 14px; /* Consistent font size */
-  background-color: #ff3333; /* Red background */
-  color: white; /* White text */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  transition: all 0.3s ease;
+  width: 120px;
+  font-size: 14px;
+  background-color: #ff3333;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .toggle-button:hover {
-  background-color: white; /* White background on hover */
-  color: #ff3333; /* Red text on hover */
+  background-color: white;
+  color: #ff3333;
 }
-/* Delete button styles */
+
 .delete-button {
-  background-color: white; /* White background */
-  color: #ff3333; /* Red text */
-  border: 2px solid #ff3333; /* Red border */
-  border-radius: 4px; /* Rounded corners */
-  padding: 10px 20px; /* Padding for button */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: all 0.3s ease; /* Smooth transition */
-  font-size: 14px; /* Consistent font size */
-  margin-top: 10px; /* Space above the button */
+  background-color: white;
+  color: #ff3333;
+  border: 2px solid #ff3333;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  margin-top: 10px;
 }
 
 .delete-button:hover {
-  background-color: #ff3333; /* Red background on hover */
-  color: white; /* White text on hover */
+  background-color: #ff3333;
+  color: white;
 }

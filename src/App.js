@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Route, Routes, useNavigate } from 'react-router-dom'; // Use useNavigate here
+import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import ErrorBoundary from './ErrorBoundary';
 import Goals from './components/Goals';
 import Metrics from './components/Metrics';
@@ -13,11 +13,10 @@ import './App.css';
 
 function App() {
   const [user, setUser] = useState(null);
-  const [refreshWorkouts, setRefreshWorkouts] = useState(false); // State to control workout refresh
-  const navigate = useNavigate(); // Initialize navigate hook
+  const [refreshWorkouts, setRefreshWorkouts] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Retrieve user data from local storage if already logged in
     const storedUser = JSON.parse(localStorage.getItem('user'));
     if (storedUser) setUser(storedUser);
   }, []);
@@ -25,12 +24,11 @@ function App() {
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem('user');
-    navigate('/login'); // Redirect to login page after logout
+    navigate('/login');
   };
 
-  // Function to refresh workouts, can be called after updating settings
   const triggerWorkoutRefresh = () => {
-    setRefreshWorkouts(prev => !prev); // Toggle refresh state to trigger re-fetch
+    setRefreshWorkouts(prev => !prev);
   };
 
   return (
